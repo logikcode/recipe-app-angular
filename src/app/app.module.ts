@@ -21,13 +21,17 @@ import {ServerComponent} from './embedded-app-one/servers/server/server.componen
 import {RouterModule, Routes} from '@angular/router';
 import {EditServerComponent} from './embedded-app-one/servers/edit-server/edit-server.component';
 import {UserComponent} from './embedded-app-one/users/user/user.component';
-import {ServersService} from './embedded-app-one/servers/servers.service';
 
 
 const appRoutes: Routes = [
   {path: 'embedded', component: HomeComponent},
-  {path: 'users', component: UsersComponent},
-  {path: 'servers', component: ServerComponent}
+  {path: 'users', component: UsersComponent, children: [
+      {path: ':id', component: UserComponent}
+    ]},
+  {path: 'servers', component: ServersComponent, children: [
+      {path: ':id', component: ServerComponent},
+      {path: ':id/edit', component: EditServerComponent}]
+  }
 ];
 
 @NgModule({
@@ -54,7 +58,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ShoppingService, ServersService],
+  providers: [ShoppingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
