@@ -18,11 +18,13 @@ import {HomeComponent} from './embedded-app-one/home/home.component';
 import {ServersComponent} from './embedded-app-one/servers/servers.component';
 import {UsersComponent} from './embedded-app-one/users/users.component';
 import {ServerComponent} from './embedded-app-one/servers/server/server.component';
-import {RouterModule, Routes} from '@angular/router';
 import {EditServerComponent} from './embedded-app-one/servers/edit-server/edit-server.component';
 import {UserComponent} from './embedded-app-one/users/user/user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import {AppRoutingModule} from './app-routing-module';
+import {AppRoutingModule} from './app-routing.module';
+import {AuthGuardService} from './auth-guard.service';
+import {AuthService} from './AuthService';
+import {CanDeactivateGuardService} from './embedded-app-one/can-deactivate-guard.service';
 
 
 
@@ -52,7 +54,7 @@ import {AppRoutingModule} from './app-routing-module';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [ShoppingService],
+  providers: [ShoppingService, AuthGuardService, AuthService, CanDeactivateGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
