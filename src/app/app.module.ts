@@ -21,18 +21,11 @@ import {ServerComponent} from './embedded-app-one/servers/server/server.componen
 import {RouterModule, Routes} from '@angular/router';
 import {EditServerComponent} from './embedded-app-one/servers/edit-server/edit-server.component';
 import {UserComponent} from './embedded-app-one/users/user/user.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {AppRoutingModule} from './app-routing-module';
 
 
-const appRoutes: Routes = [
-  {path: 'embedded', component: HomeComponent},
-  {path: 'users', component: UsersComponent, children: [
-      {path: ':id', component: UserComponent}
-    ]},
-  {path: 'servers', component: ServersComponent, children: [
-      {path: ':id', component: ServerComponent},
-      {path: ':id/edit', component: EditServerComponent}]
-  }
-];
+
 
 @NgModule({
   declarations: [
@@ -51,12 +44,13 @@ const appRoutes: Routes = [
     UsersComponent,
     EditServerComponent,
     ServerComponent,
-    UserComponent
+    UserComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
   providers: [ShoppingService],
   bootstrap: [AppComponent]
