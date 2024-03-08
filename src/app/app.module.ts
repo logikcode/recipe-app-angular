@@ -25,6 +25,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AuthGuardService} from './auth-guard.service';
 import {AuthService} from './AuthService';
 import {CanDeactivateGuardService} from './embedded-app-one/can-deactivate-guard.service';
+import {ServerResolverService} from './embedded-app-one/servers/server/server-resolver.service';
+import {ServersService} from './embedded-app-one/servers/servers.service';
 
 
 
@@ -54,7 +56,7 @@ import {CanDeactivateGuardService} from './embedded-app-one/can-deactivate-guard
     FormsModule,
     AppRoutingModule
   ],
-  providers: [ShoppingService, AuthGuardService, AuthService, CanDeactivateGuardService],
+  providers: [ShoppingService, AuthGuardService, AuthService, CanDeactivateGuardService, ServerResolverService, ServersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
