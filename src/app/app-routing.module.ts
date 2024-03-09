@@ -15,11 +15,14 @@ import {ShoppingListComponent} from './shopping-list/shopping-list.component';
 import {EmbeddedAppOneComponent} from './embedded-app-one/embedded-app-one.component';
 import {RecipeDetailComponent} from './recipes/recipe-detail/recipe-detail.component';
 import {EmptyRecipeDetailComponent} from './recipes/empty-recipe-detail/empty-recipe-detail.component';
+import {RecipeEditComponent} from './recipes/recipe-edit/recipe-edit.component';
 
 const appRoutes: Routes = [
   {path: 'recipes', component: RecipesComponent, children: [
       {path: '', component: EmptyRecipeDetailComponent},
-      {path: ':id', component: RecipeDetailComponent}
+      {path: 'new', component: RecipeEditComponent},
+      {path: ':id', component: RecipeDetailComponent},
+      {path: ':id/edit', component: RecipeEditComponent}
     ]},
   {path: '', redirectTo: '/recipes', pathMatch: 'full'},
   {path: 'shopping', component: ShoppingListComponent},
