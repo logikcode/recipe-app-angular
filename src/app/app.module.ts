@@ -27,6 +27,7 @@ import {AuthService} from './AuthService';
 import {CanDeactivateGuardService} from './embedded-app-one/can-deactivate-guard.service';
 import {ServerResolverService} from './embedded-app-one/servers/server/server-resolver.service';
 import {ServersService} from './embedded-app-one/servers/servers.service';
+import { EmptyRecipeDetailComponent } from './recipes/empty-recipe-detail/empty-recipe-detail.component';
 
 
 
@@ -49,7 +50,8 @@ import {ServersService} from './embedded-app-one/servers/servers.service';
     EditServerComponent,
     ServerComponent,
     UserComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    EmptyRecipeDetailComponent
   ],
   imports: [
     BrowserModule,

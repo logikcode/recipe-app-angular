@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" ><a routerLink="embedded"  class="">Home</a></li>
+          <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" ><a routerLink="home"  class="">Home</a></li>
           <li routerLinkActive="active"><a routerLink="servers" class="">Servers</a></li>
           <li routerLinkActive="active"><a routerLink="users" class="">Users</a></li>
         </ul>
@@ -12,7 +12,8 @@
   </nav>
   <div class="row">
     <div class="col-md-12">
-      <router-outlet></router-outlet>
+      <app-home></app-home>
+<!--      <router-outlet></router-outlet>-->
     </div>
   </div>
 </div>

@@ -10,18 +10,30 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AuthGuardService} from './auth-guard.service';
 import {CanDeactivateGuardService} from './embedded-app-one/can-deactivate-guard.service';
 import {ServerResolverService} from './embedded-app-one/servers/server/server-resolver.service';
+import {RecipesComponent} from './recipes/recipes.component';
+import {ShoppingListComponent} from './shopping-list/shopping-list.component';
+import {EmbeddedAppOneComponent} from './embedded-app-one/embedded-app-one.component';
+import {RecipeDetailComponent} from './recipes/recipe-detail/recipe-detail.component';
+import {EmptyRecipeDetailComponent} from './recipes/empty-recipe-detail/empty-recipe-detail.component';
 
 const appRoutes: Routes = [
-  {path: 'embedded', component: HomeComponent},
-  {path: 'users', component: UsersComponent, children: [
+  {path: 'recipes', component: RecipesComponent, children: [
+      {path: '', component: EmptyRecipeDetailComponent},
+      {path: ':id', component: RecipeDetailComponent}
+    ]},
+  {path: '', redirectTo: '/recipes', pathMatch: 'full'},
+  {path: 'shopping', component: ShoppingListComponent},
+  {path: 'app2', component: EmbeddedAppOneComponent},
+  {path: 'app2/users', component: UsersComponent, children: [
       {path: ':id', component: UserComponent}
     ]},
-  {path: 'servers', canActivate: [AuthGuardService], canActivateChild: [AuthGuardService], component: ServersComponent, children: [
+  {path: 'app2/home', redirectTo: 'app2'},
+  {path: 'app2/servers', canActivate: [AuthGuardService], canActivateChild: [AuthGuardService], component: ServersComponent, children: [
       {path: ':id', component: ServerComponent, resolve: {theServer: ServerResolverService}}, // using resolver approach to get data
       {path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuardService]}]
   },
   {path: 'not-found', component: PageNotFoundComponent},
-  {path: '**', redirectTo: '/not-found'}
+  // {path: '**', redirectTo: '/not-found'}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
