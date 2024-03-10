@@ -29,6 +29,7 @@ import {ServerResolverService} from './embedded-app-one/servers/server/server-re
 import {ServersService} from './embedded-app-one/servers/servers.service';
 import { EmptyRecipeDetailComponent } from './recipes/empty-recipe-detail/empty-recipe-detail.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import {FormComponent} from './form.component';
 
 
 
@@ -53,7 +54,8 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     UserComponent,
     PageNotFoundComponent,
     EmptyRecipeDetailComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,

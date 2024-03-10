@@ -16,6 +16,7 @@ import {EmbeddedAppOneComponent} from './embedded-app-one/embedded-app-one.compo
 import {RecipeDetailComponent} from './recipes/recipe-detail/recipe-detail.component';
 import {EmptyRecipeDetailComponent} from './recipes/empty-recipe-detail/empty-recipe-detail.component';
 import {RecipeEditComponent} from './recipes/recipe-edit/recipe-edit.component';
+import {FormComponent} from './form.component';
 
 const appRoutes: Routes = [
   {path: 'recipes', component: RecipesComponent, children: [
@@ -35,6 +36,7 @@ const appRoutes: Routes = [
       {path: ':id', component: ServerComponent, resolve: {theServer: ServerResolverService}}, // using resolver approach to get data
       {path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuardService]}]
   },
+  {path: 'form', component: FormComponent},
   {path: 'not-found', component: PageNotFoundComponent},
   // {path: '**', redirectTo: '/not-found'}
 ];
