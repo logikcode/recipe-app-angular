@@ -17,6 +17,7 @@ import {RecipeDetailComponent} from './recipes/recipe-detail/recipe-detail.compo
 import {EmptyRecipeDetailComponent} from './recipes/empty-recipe-detail/empty-recipe-detail.component';
 import {RecipeEditComponent} from './recipes/recipe-edit/recipe-edit.component';
 import {FormComponent} from './form.component';
+import {ReactiveFormComponent} from './reactive-form/reactive-form.component';
 
 const appRoutes: Routes = [
   {path: 'recipes', component: RecipesComponent, children: [
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
       {path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuardService]}]
   },
   {path: 'form', component: FormComponent},
+  {path: 'r-form', component: ReactiveFormComponent},
   {path: 'not-found', component: PageNotFoundComponent},
   // {path: '**', redirectTo: '/not-found'}
 ];

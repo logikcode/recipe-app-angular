@@ -11,7 +11,7 @@ export class FormComponent {
   @ViewChild('formData') signupForm: NgForm;
   defaultSecretQuestion = 'pet';
   answer = '';
-  private submitted = false;
+  submitted = false;
   genders: string[] = ['male', 'female'];
   subscriptions: string[] = ['Basic', 'Advanced', 'Pro'];
   userInfo = {

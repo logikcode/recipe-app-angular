@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -30,6 +30,7 @@ import {ServersService} from './embedded-app-one/servers/servers.service';
 import { EmptyRecipeDetailComponent } from './recipes/empty-recipe-detail/empty-recipe-detail.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import {FormComponent} from './form.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 
 
 
@@ -56,11 +57,13 @@ import {FormComponent} from './form.component';
     EmptyRecipeDetailComponent,
     RecipeEditComponent,
     FormComponent,
+    ReactiveFormComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [ShoppingService, AuthGuardService, AuthService, CanDeactivateGuardService, ServerResolverService, ServersService],
   bootstrap: [AppComponent]

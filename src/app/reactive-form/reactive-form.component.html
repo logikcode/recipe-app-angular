@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <!-- to use form control group, have a div  with attribute 'formGroupName' binding it to the name in ts reactive
+        form control just like you do to 'formControlName'-->
+        <div id="user-data">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" class="form-control" formControlName="username" required>
+            <span class="help-block" *ngIf="!signupForm.get('username').valid && signupForm.get('username').touched">
+              <span class="help-block" *ngIf="signupForm.get('username').errors['nameIsRestricted']">Please enter an acceptable username</span>
+              <span class="help-block" *ngIf="signupForm.get('username').errors['required']">Username is required</span>
+            </span>
+
+          </div>
+          <button class="btn btn-default" type="button" (click)="suggestUserName()">Suggest an Username</button>
+          <div class="form-group">
+            <label for="email">Mail</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              formControlName="email"
+            >
+            <span class="help-block" *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched">
+              Please enter a valid email</span>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" formControlName="password" class="form-control"
+                   required/>
+            <span class="help-block" *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched">
+              Please enter a valid password</span>
+          </div>
+          <div class="m">
+            <div formArrayName="hobbies">
+              <h4>Your Hobbies</h4>
+              <button type="button" class="btn btn-default" (click)="addHobby()">Add Hobby</button>
+              <div class="form-group" *ngFor="let hobby of signupForm.get('hobbies').controls; let i = index">
+                <input type="text" class="form-control" [formControlName]="i"/>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <select name="subscription" id="subscription" class="form-control" formArrayName="">
+              <option *ngFor="let subscription of subscriptions" value="subscription">{{ subscription }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="secret">Secret Questions</label>
+          <select id="secret" class="form-control" name="secret">
+            <option value="pet">Your first Pet?</option>
+            <option value="teacher">Your first teacher?</option>
+          </select>
+        </div>
+
+        <!-- Form radio button with angular -->
+        <div *ngFor="let gender of genders">
+          <label>
+            <input type="radio" [value]="gender" name="gender"/>
+            {{ gender }}
+          </label>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="signupForm.valid">Submit</button>
+      </form>
+    </div>
+    <hr/>
+
+  </div>
+</div>
