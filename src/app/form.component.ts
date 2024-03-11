@@ -8,11 +8,12 @@ import {NgForm} from '@angular/forms';
 })
 export class FormComponent {
   enabledSubmit = true;
-  @ViewChild('f') signupForm: NgForm;
+  @ViewChild('formData') signupForm: NgForm;
   defaultSecretQuestion = 'pet';
   answer = '';
   private submitted = false;
   genders: string[] = ['male', 'female'];
+  subscriptions: string[] = ['Basic', 'Advanced', 'Pro'];
   userInfo = {
     username: '',
     email: '',
@@ -20,6 +21,7 @@ export class FormComponent {
     answer: '',
     gender: ''
   };
+  defaultSubscription: string = this.subscriptions[0];
 
 
   suggestUserName() {
@@ -29,8 +31,9 @@ export class FormComponent {
 
   }
 
-  onSubmit(f: NgForm) {
-    console.log(f);
+  onSubmit(formData: NgForm) {
+    console.log(formData);
+    console.log(formData.value);
     this.submitted = true;
     this.userInfo.username = this.signupForm.value.username;
     this.userInfo.email = this.signupForm.value.email;

@@ -55,7 +55,7 @@ import {FormComponent} from './form.component';
     PageNotFoundComponent,
     EmptyRecipeDetailComponent,
     RecipeEditComponent,
-    FormComponent
+    FormComponent,
   ],
   imports: [
     BrowserModule,
