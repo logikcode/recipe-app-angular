@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 import {Ingredient} from '../shared/ingredient.model';
 import {ShoppingService} from './shopping.service';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-shopping-list',
@@ -26,5 +27,9 @@ export class ShoppingListComponent implements OnInit {
     this.shoppingService.ingredientItem.subscribe(updatedIngredients => {
       this.ingredients = updatedIngredients;
     });
+  }
+
+  onShoppingItem(i: number) {
+    this.shoppingService.startedEditingIngredient.next(i);
   }
 }
