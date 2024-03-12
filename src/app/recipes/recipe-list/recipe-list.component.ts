@@ -1,6 +1,6 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 
-import { Recipe } from '../recipe.model';
+import {Recipe} from '../recipe.model';
 import {RecipesService} from '../recipes.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
@@ -12,11 +12,17 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class RecipeListComponent implements OnInit {
 
   recipes: Recipe[];
+  totalNumbersOfRecipe: number;
 
-  constructor(private recipeService: RecipesService, private router: Router, private activeRoute: ActivatedRoute) { }
+  constructor(private recipeService: RecipesService, private router: Router, private activeRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.recipes = this.recipeService.getRecipes();
+    this.recipeService.recipeUpdated.subscribe(recipes => {
+      this.recipes = recipes;
+    });
+    console.log('Total recipes ' + this.recipes.length);
   }
 
   onNew() {
