@@ -51,4 +51,10 @@ export class RecipesService {
   sendRecipesCopy() {
     this.recipeUpdated.next(this.recipes.slice());
   }
+
+  deleteRecipe(index: number) {
+    this.recipes.splice(index, 1);
+    this.sendRecipesCopy();
+
+  }
 }
