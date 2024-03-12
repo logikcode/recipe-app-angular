@@ -4,7 +4,7 @@ import {Subject} from 'rxjs';
 
 export class ShoppingService {
 
-  ingredientItem = new EventEmitter<Ingredient[]>();
+  ingredientsEvent = new EventEmitter<Ingredient[]>();
   private ingredients: Ingredient[] = [
     new Ingredient('Apples', 5),
     new Ingredient('Tomatoes', 10),
@@ -20,12 +20,12 @@ export class ShoppingService {
 
   addShoppingIngredient(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
-    this.ingredientItem.emit(this.ingredients.slice());
+    this.ingredientsEvent.emit(this.ingredients.slice());
   }
 
   addIngredients(ingredients: Ingredient[]) {
     this.ingredients.push(...ingredients);
-    this.ingredientItem.emit(this.ingredients.slice());
+    this.ingredientsEvent.emit(this.ingredients.slice());
   }
 
   getIngredient(index: number) {
@@ -34,6 +34,11 @@ export class ShoppingService {
 
   updateIngredient(position: number, updatedIngredient: Ingredient) {
     this.ingredients[position] = updatedIngredient;
-    this.ingredientItem.emit(this.ingredients.slice());
+    this.ingredientsEvent.emit(this.ingredients.slice());
+  }
+
+  deleteIngredient(ingredientIndex: number) {
+    this.ingredients.splice(ingredientIndex, 1);
+    this.ingredientsEvent.emit(this.ingredients.slice());
   }
 }

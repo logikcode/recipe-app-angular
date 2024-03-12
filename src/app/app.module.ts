@@ -31,6 +31,7 @@ import { EmptyRecipeDetailComponent } from './recipes/empty-recipe-detail/empty-
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import {FormComponent} from './form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { App2HeaderComponent } from './embedded-app-one/app2-header/app2-header.component';
 
 
 
@@ -58,6 +59,7 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
     RecipeEditComponent,
     FormComponent,
     ReactiveFormComponent,
+    App2HeaderComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,7 +6,7 @@ import {AuthService} from './AuthService';
 @Injectable()
 export class AuthGuardService implements CanActivate, CanActivateChild {
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, private currentRoute: ActivatedRoute) {
 
   }
 
@@ -17,17 +17,18 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
         if (isAuthenticated) {
           return true;
         } else {
-          this.router.navigate(['/users']);
+          this.router.navigate(['app2', 'users'], {relativeTo: this.currentRoute});
         }
       });
   }
 
-  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> |
+    Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.authService.isAuthenticated().then((isSuccessLoginResponse: boolean) => {
       if (isSuccessLoginResponse) {
         return isSuccessLoginResponse;
       } else {
-        this.router.navigate(['/embedded']);
+        this.router.navigate(['/app2']);
       }
     });
   }

@@ -20,28 +20,39 @@ import {FormComponent} from './form.component';
 import {ReactiveFormComponent} from './reactive-form/reactive-form.component';
 
 const appRoutes: Routes = [
-  {path: 'recipes', component: RecipesComponent, children: [
+  {
+    path: 'recipes', component: RecipesComponent, children: [
       {path: '', component: EmptyRecipeDetailComponent},
       {path: 'new', component: RecipeEditComponent},
       {path: ':id', component: RecipeDetailComponent},
+      {path: 'edit/:id', component: RecipeEditComponent},
       {path: ':id/edit', component: RecipeEditComponent}
-    ]},
+    ]
+  },
   {path: '', redirectTo: '/recipes', pathMatch: 'full'},
   {path: 'shopping', component: ShoppingListComponent},
-  {path: 'app2', component: EmbeddedAppOneComponent},
-  {path: 'app2/users', component: UsersComponent, children: [
-      {path: ':id', component: UserComponent}
-    ]},
-  {path: 'app2/home', redirectTo: 'app2'},
-  {path: 'app2/servers', canActivate: [AuthGuardService], canActivateChild: [AuthGuardService], component: ServersComponent, children: [
-      {path: ':id', component: ServerComponent, resolve: {theServer: ServerResolverService}}, // using resolver approach to get data
-      {path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuardService]}]
+  {
+    path: 'app2', component: EmbeddedAppOneComponent, children: [
+      {path: 'home', component: HomeComponent},
+      {
+        path: 'users', component: UsersComponent, children: [
+          {path: ':id', component: UserComponent}
+        ]
+      },
+      {
+        path: 'servers', canActivate: [AuthGuardService], canActivateChild: [AuthGuardService], component: ServersComponent,
+        children: [
+          {path: ':id', component: ServerComponent, resolve: {theServer: ServerResolverService}}, // using resolver approach to get data
+          {path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuardService]}]
+      },
+    ]
   },
   {path: 'form', component: FormComponent},
   {path: 'r-form', component: ReactiveFormComponent},
   {path: 'not-found', component: PageNotFoundComponent},
   // {path: '**', redirectTo: '/not-found'}
 ];
+
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]

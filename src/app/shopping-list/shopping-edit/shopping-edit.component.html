@@ -31,8 +31,8 @@
           <button class="btn btn-success" type="submit"
                   [disabled]="!ingredientForm.valid">{{ onEditMode ? 'Update' : 'Add' }}
           </button>
-          <button class="btn btn-danger" type="button">Delete</button>
-          <button class="btn btn-primary" type="button"(click)="onClear()">Clear</button>
+          <button class="btn btn-danger" type="button" *ngIf="onEditMode" (click)="onDelete()">Delete</button>
+          <button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
         </div>
       </div>
     </form>
