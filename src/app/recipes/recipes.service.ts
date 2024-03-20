@@ -57,4 +57,9 @@ export class RecipesService {
     this.sendRecipesCopy();
 
   }
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.sendRecipesCopy();
+  }
 }

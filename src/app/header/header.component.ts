@@ -18,4 +18,8 @@ export class HeaderComponent {
   onSendToServer() {
     this.datastoreService.storeRecipes();
   }
+
+  fetchRecipesFromServer() {
+    this.datastoreService.fetchRecipesFromServer();
+  }
 }
