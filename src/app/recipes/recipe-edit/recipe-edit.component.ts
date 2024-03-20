@@ -81,8 +81,6 @@ export class RecipeEditComponent implements OnInit {
     if (this.editMode) {
       this.recipeService.updateRecipe(this.id, newRecipe);
       this.navigateToHome();
-
-
     } else {
       this.recipeService.addRecipe(newRecipe);
       this.navigateToHome();

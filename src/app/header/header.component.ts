@@ -20,6 +20,6 @@ export class HeaderComponent {
   }
 
   fetchRecipesFromServer() {
-    this.datastoreService.fetchRecipesFromServer();
+    this.datastoreService.fetchRecipesFromServer().subscribe();
   }
 }

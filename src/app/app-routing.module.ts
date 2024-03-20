@@ -18,15 +18,16 @@ import {EmptyRecipeDetailComponent} from './recipes/empty-recipe-detail/empty-re
 import {RecipeEditComponent} from './recipes/recipe-edit/recipe-edit.component';
 import {FormComponent} from './form.component';
 import {ReactiveFormComponent} from './reactive-form/reactive-form.component';
+import {RecipesResolverService} from './recipes/recipes.resolver.service';
 
 const appRoutes: Routes = [
   {
     path: 'recipes', component: RecipesComponent, children: [
       {path: '', component: EmptyRecipeDetailComponent},
       {path: 'new', component: RecipeEditComponent},
-      {path: ':id', component: RecipeDetailComponent},
-      {path: 'edit/:id', component: RecipeEditComponent},
-      {path: ':id/edit', component: RecipeEditComponent}
+      {path: ':id', component: RecipeDetailComponent, resolve: [RecipesResolverService]},
+      {path: 'edit/:id', component: RecipeEditComponent,  resolve: [RecipesResolverService]},
+      {path: ':id/edit', component: RecipeEditComponent,  resolve: [RecipesResolverService]}
     ]
   },
   {path: '', redirectTo: '/recipes', pathMatch: 'full'},
