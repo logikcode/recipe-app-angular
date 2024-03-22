@@ -34,6 +34,7 @@ import {ReactiveFormComponent} from './reactive-form/reactive-form.component';
 import {App2HeaderComponent} from './embedded-app-one/app2-header/app2-header.component';
 import {RecipesService} from './recipes/recipes.service';
 import {HttpClientModule} from '@angular/common/http';
+import {AuthComponent} from './auth/auth.component';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import {HttpClientModule} from '@angular/common/http';
     FormComponent,
     ReactiveFormComponent,
     App2HeaderComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
