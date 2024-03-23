@@ -23,6 +23,10 @@ export class DataStorageService {
   }
 
   fetchRecipesFromServer() {
+    return this.fetchRecipesUsingTokenWithinInterceptor();
+  }
+
+  private fetchRecipeUsingParamTokenAuth() {
     return this.authenticationService.userSubject
       .pipe(take(1), // getting the value only one and not manually unsubscribe
         exhaustMap(user => { // exhaustMap collapse previouse observable to one in the observable chain
@@ -42,4 +46,16 @@ export class DataStorageService {
       );
   }
 
+  fetchRecipesUsingTokenWithinInterceptor() {
+    return this.httpClient.get<Recipe[]>('https://app-recipe-21494-default-rtdb.firebaseio.com/recipes.json')
+      .pipe(map(recipes => {
+          return recipes
+            .map(recipe => {
+              return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []};
+            });
+        }),
+        tap(recipes => {
+          this.recipesService.setRecipesFromServer(recipes);
+        }));
+  }
 }

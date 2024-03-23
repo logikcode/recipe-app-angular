@@ -33,9 +33,10 @@ import {FormComponent} from './form.component';
 import {ReactiveFormComponent} from './reactive-form/reactive-form.component';
 import {App2HeaderComponent} from './embedded-app-one/app2-header/app2-header.component';
 import {RecipesService} from './recipes/recipes.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthComponent} from './auth/auth.component';
 import {LoadingSpinnerComponent} from './shared/spinner/loading-spinner.component';
+import {AuthInterceptorService} from './auth/auth-interceptor.service';
 
 
 @NgModule({
@@ -73,7 +74,7 @@ import {LoadingSpinnerComponent} from './shared/spinner/loading-spinner.componen
     ReactiveFormsModule
   ],
   providers: [RecipesService, ShoppingService, AuthGuardService, AuthService, CanDeactivateGuardService,
-    ServerResolverService, ServersService],
+    ServerResolverService, ServersService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

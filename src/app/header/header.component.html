@@ -20,7 +20,7 @@
             <li><a style="cursor: pointer" (click)="fetchRecipesFromServer()">Fetch Data</a></li>
           </ul>
         </li>
-        <li><a style="cursor: pointer" *ngIf="isAuthenticated">Logout</a></li>
+        <li><a style="cursor: pointer" *ngIf="isAuthenticated" (click)="onLogout()">Logout</a></li>
       </ul>
     </div>
   </div>

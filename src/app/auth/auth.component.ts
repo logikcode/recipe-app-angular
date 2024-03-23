@@ -25,7 +25,6 @@ export class AuthComponent {
   onSubmitAuthForm(authenticationForm: NgForm) {
     let authenticationObservable: Observable<AuthenticationResponseData>;
 
-    console.log(authenticationForm.value);
     if (!authenticationForm.valid) {
       return;
     }
@@ -40,7 +39,6 @@ export class AuthComponent {
     }
 
     authenticationObservable.subscribe(data => {
-      console.log(data);
       this.isLoading = false;
     }, errorResponse => {
       this.error = errorResponse;

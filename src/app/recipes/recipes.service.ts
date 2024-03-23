@@ -4,27 +4,13 @@ import {Ingredient} from '../shared/ingredient.model';
 import {ShoppingService} from '../shopping-list/shopping.service';
 import {Subject} from 'rxjs';
 import {DataStorageService} from '../shared/data-storage.service';
+import {AuthenticationService} from '../auth/authentication.service';
 
 @Injectable()
 export class RecipesService implements OnInit {
   recipeSelected = new EventEmitter<Recipe>();
   recipeUpdated = new Subject<Recipe[]>();
   private recipes: Recipe[] = [];
-
-  //  [
-  //   new Recipe(0, 'A Recipe',
-  //     'This is simply a test',
-  //     'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
-  //     [
-  //       new Ingredient('Onion', 5),
-  //       new Ingredient('Sugar', 10)
-  //     ]),
-  //   new Recipe(1, 'Another  Recipe', 'This is simple recipe',
-  //     'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg', [
-  //       new Ingredient('Maggi', 20),
-  //       new Ingredient('Shakes', 4)
-  //     ])
-  // ];
 
   constructor(private shoppingService: ShoppingService) {
   }

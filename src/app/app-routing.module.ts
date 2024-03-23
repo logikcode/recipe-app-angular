@@ -20,10 +20,11 @@ import {FormComponent} from './form.component';
 import {ReactiveFormComponent} from './reactive-form/reactive-form.component';
 import {RecipesResolverService} from './recipes/recipes.resolver.service';
 import {AuthComponent} from './auth/auth.component';
+import {RecipeAuthGuardService} from './guard/recipe-auth-guard.service';
 
 const appRoutes: Routes = [
   {
-    path: 'recipes', component: RecipesComponent, children: [
+    path: 'recipes', component: RecipesComponent, canActivate: [RecipeAuthGuardService], children: [
       {path: '', component: EmptyRecipeDetailComponent},
       {path: 'new', component: RecipeEditComponent},
       {path: ':id', component: RecipeDetailComponent, resolve: [RecipesResolverService]},
