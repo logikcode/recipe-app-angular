@@ -9,6 +9,8 @@ import {AuthenticationService} from './authentication.service';
 export class AuthComponent {
 
   isLoginMode = true;
+  isLoading = false;
+  error: string = null;
 
   constructor(private authenticationService: AuthenticationService) {
   }
@@ -22,6 +24,7 @@ export class AuthComponent {
     if (!authenticationForm.valid) {
       return;
     }
+    this.isLoading = true;
     if (this.isLoginMode) {
 
     } else {
@@ -29,8 +32,11 @@ export class AuthComponent {
         .sendAuthLoginRequest(authenticationForm.value.email, authenticationForm.value.password)
         .subscribe(data => {
           console.log(data);
-        }, error => {
-          console.log(error);
+          this.isLoading = false;
+        }, errorResponse => {
+          this.error = errorResponse;
+          this.isLoading = false;
+
         });
     }
     authenticationForm.reset();
