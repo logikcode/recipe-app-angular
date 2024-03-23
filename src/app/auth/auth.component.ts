@@ -29,7 +29,7 @@ export class AuthComponent {
 
     } else {
       this.authenticationService
-        .sendAuthLoginRequest(authenticationForm.value.email, authenticationForm.value.password)
+        .sendSignUpRequest(authenticationForm.value.email, authenticationForm.value.password)
         .subscribe(data => {
           console.log(data);
           this.isLoading = false;
